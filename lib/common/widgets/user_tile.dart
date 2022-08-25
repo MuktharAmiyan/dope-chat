@@ -6,7 +6,7 @@ class UserTile extends StatelessWidget {
   final String profileImage;
   final String userName;
   final String? lastMessage;
-  final String? timeSent;
+  final bool isOnline;
   bool isSearchTitle;
   UserTile(
       {Key? key,
@@ -14,7 +14,7 @@ class UserTile extends StatelessWidget {
       required this.userName,
       this.isSearchTitle = false,
       this.lastMessage,
-      this.timeSent})
+      this.isOnline = true})
       : super(key: key);
 
   @override
@@ -36,9 +36,9 @@ class UserTile extends StatelessWidget {
             )
           : null,
       trailing: !isSearchTitle
-          ? Text(
-              timeSent!,
-              style: const TextStyle(color: Colors.grey),
+          ? CircleAvatar(
+              backgroundColor: isOnline ? Colors.green : Colors.red,
+              radius: 5,
             )
           : null,
     );

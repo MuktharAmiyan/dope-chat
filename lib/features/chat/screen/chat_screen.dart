@@ -15,7 +15,7 @@ class ChatScreen extends StatelessWidget {
         profileImage: "",
         userName: "UserName",
         lastMessage: 'lastMessage',
-        timeSent: '12:30 PM',
+        isOnline: true,
       ),
       separatorBuilder: (context, index) => const Divider(),
       itemCount: 10,

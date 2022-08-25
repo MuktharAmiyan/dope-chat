@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class LandingScreen extends StatefulWidget {
-  const LandingScreen({Key? key}) : super(key: key);
+class AuthScreen extends StatefulWidget {
+  const AuthScreen({Key? key}) : super(key: key);
+  static const routeName = '/auth-screen';
 
   @override
-  State<LandingScreen> createState() => _LandingScreenState();
+  State<AuthScreen> createState() => _AuthScreenState();
 }
 
-class _LandingScreenState extends State<LandingScreen> {
+class _AuthScreenState extends State<AuthScreen> {
   final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _countryCodeController =
       TextEditingController(text: '+91');

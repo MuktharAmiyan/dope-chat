@@ -4,12 +4,19 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
-class AuthInfoScreen extends StatelessWidget {
-  static const routeName = '/auth-user-info';
-  AuthInfoScreen({
-    Key? key,
-  }) : super(key: key);
+class UserEditScreen extends StatefulWidget {
+  static const routeName = '/user-edit-screen';
+  final String userName;
+  final String dob;
 
+  const UserEditScreen({Key? key, required this.userName, required this.dob})
+      : super(key: key);
+
+  @override
+  State<UserEditScreen> createState() => _UserEditScreenState();
+}
+
+class _UserEditScreenState extends State<UserEditScreen> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController dobController = TextEditingController();
   DateTime? selectedDate;
@@ -28,10 +35,24 @@ class AuthInfoScreen extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+  void initState() {
+    super.initState();
+    nameController.text = widget.userName;
+    dobController.text = widget.dob;
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.done),
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Column(
@@ -41,30 +62,18 @@ class AuthInfoScreen extends StatelessWidget {
             Stack(
               children: [
                 CircleAvatar(
-                  backgroundColor: Colors.grey,
-                  radius: 60,
-                  child: Icon(
-                    Icons.person,
-                    size: size.width * .25,
-                    color: Colors.white,
-                  ),
+                  backgroundColor: Colors.accents[10],
+                  radius: 50,
                 ),
                 Positioned(
                   bottom: 0,
                   right: -10,
                   child: IconButton(
                     onPressed: () {},
-                    icon: const Icon(
-                      Icons.add_a_photo,
-                      color: Colors.blueGrey,
-                      size: 30,
-                    ),
+                    icon: Icon(Icons.add_a_photo_outlined),
                   ),
-                )
+                ),
               ],
-            ),
-            const SizedBox(
-              height: 20,
             ),
             CustomTextField(
               hintText: 'Enter Name',
@@ -79,21 +88,6 @@ class AuthInfoScreen extends StatelessWidget {
               },
             ),
           ],
-        ),
-      ),
-      floatingActionButton: SizedBox(
-        width: 100,
-        child: FloatingActionButton(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-          onPressed: () {},
-          backgroundColor: Colors.blueGrey,
-          child: const Text(
-            "Sign In",
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          ),
         ),
       ),
     );

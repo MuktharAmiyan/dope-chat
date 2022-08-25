@@ -50,8 +50,7 @@ class IndroductionPage extends StatelessWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const LandingScreen()));
+            Navigator.pushNamed(context, AuthScreen.routeName);
           },
           backgroundColor: Colors.blueGrey,
           child: const Icon(

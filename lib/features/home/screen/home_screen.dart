@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-
-import '../../../common/widgets/search/screen/search_screen.dart';
+import '../../search/screen/search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
+  static const routeName = '/home-screen';
   HomeScreen({Key? key}) : super(key: key);
 
-  final ValueNotifier<int> _selectedIndexNotifier = ValueNotifier(1);
+  final ValueNotifier<int> _selectedIndexNotifier = ValueNotifier(2);
   final pageList = const [ChatScreen(), SearchScreen(), AccountScreen()];
 
   @override
