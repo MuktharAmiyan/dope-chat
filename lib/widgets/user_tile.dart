@@ -35,7 +35,12 @@ class UserTile extends StatelessWidget {
               style: const TextStyle(color: Colors.grey),
             )
           : null,
-      trailing: !isSearchTitle ? Text(timeSent!) : null,
+      trailing: !isSearchTitle
+          ? Text(
+              timeSent!,
+              style: const TextStyle(color: Colors.grey),
+            )
+          : null,
     );
   }
 }
