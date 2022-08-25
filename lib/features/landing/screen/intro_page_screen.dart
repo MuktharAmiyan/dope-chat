@@ -1,4 +1,4 @@
-import 'package:dope_chat/screens/auth_screen.dart';
+import 'package:dope_chat/features/auth/screen/auth_screen.dart';
 import 'package:flutter/material.dart';
 
 class IndroductionPage extends StatelessWidget {

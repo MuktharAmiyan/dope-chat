@@ -1,6 +1,6 @@
-import 'package:dope_chat/screens/auth_user_info.dart';
-import 'package:dope_chat/screens/home_screen.dart';
-import 'package:dope_chat/screens/intro_page_screen.dart';
+import 'package:dope_chat/features/auth/screen/auth_user_info.dart';
+import 'package:dope_chat/features/home/screen/home_screen.dart';
+import 'package:dope_chat/features/landing/screen/intro_page_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

@@ -1,4 +1,4 @@
-import 'package:dope_chat/widgets/custom_text_fields.dart';
+import 'package:dope_chat/common/widgets/custom_text_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';

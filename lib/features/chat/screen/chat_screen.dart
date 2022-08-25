@@ -1,4 +1,4 @@
-import 'package:dope_chat/widgets/user_tile.dart';
+import 'package:dope_chat/common/widgets/user_tile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';

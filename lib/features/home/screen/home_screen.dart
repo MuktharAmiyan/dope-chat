@@ -1,10 +1,12 @@
-import 'package:dope_chat/screens/account_screen.dart';
-import 'package:dope_chat/screens/chat_screen.dart';
-import 'package:dope_chat/screens/search_screen.dart';
+import 'package:dope_chat/features/account/screen/account_screen.dart';
+import 'package:dope_chat/features/chat/screen/chat_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+
+import '../../../common/widgets/search/screen/search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
