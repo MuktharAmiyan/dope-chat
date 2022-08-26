@@ -15,6 +15,7 @@ class SearchScreen extends StatelessWidget {
       appBar: AppBar(
         title: CupertinoSearchTextField(
           padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+          style: TextStyle(color: whiteColor),
         ),
         backgroundColor: transparentColor,
       ),
