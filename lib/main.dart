@@ -1,5 +1,7 @@
 import 'package:dope_chat/features/auth/screen/auth_user_info.dart';
-import 'package:dope_chat/features/home/screen/home_screen.dart';
+import 'package:dope_chat/features/chat/screen/chat_screen.dart';
+import 'package:dope_chat/features/chat/screen/chat_userScreen.dart';
+
 import 'package:dope_chat/features/landing/screen/intro_page_screen.dart';
 import 'package:dope_chat/route.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.black,
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: HomeScreen(),
+      home: ChatScreen(),
     );
   }
 }
