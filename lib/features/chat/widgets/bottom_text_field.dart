@@ -86,17 +86,11 @@ class _BottomTextFieldState extends State<BottomTextField> {
         ),
         Padding(
           padding: const EdgeInsets.only(right: 15),
-          child: GestureDetector(
-            onTap: () {},
-            child: CircleAvatar(
-              backgroundColor: intigoColor.shade800,
-              radius: 25,
-              child: const Icon(
-                Icons.send,
-                color: whiteColor,
-              ),
-            ),
-          ),
+          child: CircleButton(
+              size: 25,
+              buttonColor: intigoColor.shade800,
+              onPressed: () {},
+              icon: Icons.send),
         )
       ],
     );
