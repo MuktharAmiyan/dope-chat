@@ -84,14 +84,11 @@ class _BottomTextFieldState extends State<BottomTextField> {
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(right: 15),
-          child: CircleButton(
-              size: 25,
-              buttonColor: intigoColor.shade800,
-              onPressed: () {},
-              icon: Icons.send),
-        )
+        CircleButton(
+            size: 50,
+            buttonColor: intigoColor.shade800,
+            onPressed: () {},
+            icon: Icons.send)
       ],
     );
   }
