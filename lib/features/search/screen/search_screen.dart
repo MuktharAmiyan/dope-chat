@@ -7,15 +7,17 @@ import 'package:flutter/src/widgets/framework.dart';
 
 class SearchScreen extends StatelessWidget {
   static const routeName = '/search-screen';
-  const SearchScreen({Key? key}) : super(key: key);
+  SearchScreen({Key? key}) : super(key: key);
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: CupertinoSearchTextField(
+          controller: _searchController,
           padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-          style: TextStyle(color: whiteColor),
+          style: const TextStyle(color: whiteColor),
         ),
         backgroundColor: transparentColor,
       ),

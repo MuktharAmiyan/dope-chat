@@ -20,48 +20,36 @@ class ReceiverMessageCard extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Align(
       alignment: Alignment.centerLeft,
-      child: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: CircleAvatar(
-              backgroundColor: Colors.greenAccent,
-            ),
-          ),
-          ConstrainedBox(
-            constraints:
-                BoxConstraints(minWidth: 80, maxWidth: size.width - 100),
-            child: Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15)),
-              color: greyColor[850],
-              child: Stack(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: 10, left: 10, right: 20, bottom: 22),
-                    child: Text(
-                      messgaeText,
-                      style: TextStyle(
-                        color: whiteColor,
-                        fontSize: 14,
-                      ),
-                    ),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(minWidth: 80, maxWidth: size.width - 40),
+        child: Card(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          color: greyColor[850],
+          child: Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 10, left: 10, right: 20, bottom: 22),
+                child: Text(
+                  messgaeText,
+                  style: const TextStyle(
+                    color: whiteColor,
+                    fontSize: 14,
                   ),
-                  Positioned(
-                      bottom: 5,
-                      right: 10,
-                      child: Text(
-                        timeSent,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: greyColor.shade600),
-                      ))
-                ],
+                ),
               ),
-            ),
+              Positioned(
+                  bottom: 5,
+                  right: 10,
+                  child: Text(
+                    timeSent,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: greyColor.shade600),
+                  ))
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

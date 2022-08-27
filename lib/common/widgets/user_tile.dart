@@ -6,7 +6,8 @@ class UserTile extends StatelessWidget {
   final String profileImage;
   final String userName;
   final String? lastMessage;
-  final bool isOnline;
+  final bool? isOnline;
+  final VoidCallback? onTap;
   bool isSearchTitle;
   UserTile(
       {Key? key,
@@ -14,12 +15,14 @@ class UserTile extends StatelessWidget {
       required this.userName,
       this.isSearchTitle = false,
       this.lastMessage,
-      this.isOnline = true})
+      this.isOnline,
+      this.onTap})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: onTap,
       leading: CircleAvatar(
         //backgroundImage: NetworkImage(profileImage),
         backgroundColor: Colors.greenAccent,
@@ -37,7 +40,7 @@ class UserTile extends StatelessWidget {
           : null,
       trailing: !isSearchTitle
           ? CircleAvatar(
-              backgroundColor: isOnline ? Colors.green : Colors.red,
+              backgroundColor: isOnline! ? Colors.green : Colors.red,
               radius: 5,
             )
           : null,

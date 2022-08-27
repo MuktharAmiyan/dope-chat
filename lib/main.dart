@@ -1,3 +1,4 @@
+import 'package:dope_chat/common/const/colors.dart';
 import 'package:dope_chat/features/auth/screen/auth_user_info.dart';
 import 'package:dope_chat/features/chat/screen/chat_screen.dart';
 import 'package:dope_chat/features/chat/screen/chat_userScreen.dart';

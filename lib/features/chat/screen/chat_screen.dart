@@ -1,5 +1,6 @@
 import 'package:dope_chat/common/widgets/user_tile.dart';
 import 'package:dope_chat/features/account/screen/account_screen.dart';
+import 'package:dope_chat/features/chat/screen/chat_userScreen.dart';
 import 'package:dope_chat/features/search/screen/search_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +47,10 @@ class ChatScreen extends StatelessWidget {
           userName: "UserName",
           lastMessage: 'lastMessage',
           isOnline: true,
+          onTap: () {
+            Navigator.pushNamed(context, ChatUserScreen.routeName,
+                arguments: {'uid': "jhvajfvkjvzkjgv"});
+          },
         ),
         separatorBuilder: (context, index) => const Divider(),
         itemCount: 10,

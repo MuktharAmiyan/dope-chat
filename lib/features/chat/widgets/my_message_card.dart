@@ -27,7 +27,7 @@ class MyMessageCard extends StatelessWidget {
         child: Card(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-          color: blueGray[900],
+          color: blueGrayColor[900],
           child: Stack(
             children: [
               Padding(
@@ -46,8 +46,8 @@ class MyMessageCard extends StatelessWidget {
                   right: 10,
                   child: Text(
                     timeSent,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: blueGray.shade900),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, color: greyColor),
                   ))
             ],
           ),

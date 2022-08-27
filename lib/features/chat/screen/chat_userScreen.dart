@@ -1,4 +1,5 @@
 import 'package:dope_chat/common/const/colors.dart';
+import 'package:dope_chat/features/chat/widgets/bottom_text_field.dart';
 import 'package:dope_chat/features/chat/widgets/my_message_card.dart';
 import 'package:dope_chat/features/chat/widgets/receiver_message_card.dart';
 import 'package:dope_chat/info.dart';
@@ -7,29 +8,46 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class ChatUserScreen extends StatelessWidget {
-  const ChatUserScreen({Key? key}) : super(key: key);
+  static const routeName = '/user-chat-screen';
+  final String uid;
+  const ChatUserScreen({Key? key, required this.uid}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('userName'),
+        title: Text(uid),
         backgroundColor: transparentColor,
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          final _message = messages[index];
-          return _message['isMe'] == true
-              ? MyMessageCard(
-                  messgaeText: _message['text'].toString(),
-                  timeSent: _message['time'].toString(),
-                )
-              : ReceiverMessageCard(
-                  messgaeText: _message['text'].toString(),
-                  timeSent: _message['time'].toString(),
+      body: Stack(
+        children: [
+          ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            itemCount: (messages.length) + 1,
+            itemBuilder: (context, index) {
+              if (index < messages.length) {
+                final _message = messages[index];
+                return _message['isMe'] == true
+                    ? MyMessageCard(
+                        messgaeText: _message['text'].toString(),
+                        timeSent: _message['time'].toString(),
+                      )
+                    : ReceiverMessageCard(
+                        messgaeText: _message['text'].toString(),
+                        timeSent: _message['time'].toString(),
+                      );
+              } else {
+                return const SizedBox(
+                  height: 60,
                 );
-        },
-        itemCount: messages.length,
+              }
+            },
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: BottomTextField(),
+          ),
+        ],
       ),
     );
   }
