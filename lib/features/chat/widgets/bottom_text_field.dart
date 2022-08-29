@@ -1,5 +1,7 @@
 import 'package:dope_chat/common/const/colors.dart';
+import 'package:dope_chat/common/utils/utils.dart';
 import 'package:dope_chat/features/chat/widgets/circle_button.dart';
+import 'package:dope_chat/features/chat/widgets/confirm_sent_file.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -49,7 +51,7 @@ class _BottomTextFieldState extends State<BottomTextField> {
                             topRight: Radius.circular(20),
                           )),
                           context: context,
-                          builder: (context) => _BottomSheetelements());
+                          builder: (context) => bottomSheetelements());
                     },
                     icon: const Icon(Icons.camera_alt),
                   ),
@@ -93,29 +95,53 @@ class _BottomTextFieldState extends State<BottomTextField> {
     );
   }
 
-  Widget _BottomSheetelements() {
+  Widget bottomSheetelements() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         CircleButton(
             size: 100,
             buttonColor: blueGrayColor,
-            onPressed: () {},
+            onPressed: () async {
+              var file = await pickImageFromCamera();
+              if (file != null) {
+                Navigator.pushNamed(context, ConfirmSentFile.routeName,
+                    arguments: file);
+              }
+            },
             icon: Icons.camera),
         CircleButton(
             size: 100,
             buttonColor: blueGrayColor,
-            onPressed: () {},
+            onPressed: () async {
+              var file = await pickImageFromGallery();
+              if (file != null) {
+                Navigator.pushNamed(context, ConfirmSentFile.routeName,
+                    arguments: file);
+              }
+            },
             icon: Icons.image),
         CircleButton(
             size: 100,
             buttonColor: blueGrayColor,
-            onPressed: () {},
+            onPressed: () async {
+              var file = await pickVideoFromCamera();
+              if (file != null) {
+                Navigator.pushNamed(context, ConfirmSentFile.routeName,
+                    arguments: file);
+              }
+            },
             icon: Icons.videocam),
         CircleButton(
             size: 100,
             buttonColor: blueGrayColor,
-            onPressed: () {},
+            onPressed: () async {
+              var file = await pickVideoFromGallery();
+              if (file != null) {
+                Navigator.pushNamed(context, ConfirmSentFile.routeName,
+                    arguments: file);
+              }
+            },
             icon: Icons.video_camera_back)
       ],
     );

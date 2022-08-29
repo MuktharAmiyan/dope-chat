@@ -37,6 +37,7 @@ dependencies:
   flutter_datetime_picker:
     git: https://github.com/Realank/flutter_datetime_picker.git  
   google_nav_bar: ^5.0.6
+  image_picker: ^0.8.5+3
 
 dev_dependencies:
   flutter_test:

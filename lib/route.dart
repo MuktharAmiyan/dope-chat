@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:dope_chat/features/account/screen/account_screen.dart';
 import 'package:dope_chat/features/account/screen/user_edit.dart';
 import 'package:dope_chat/features/auth/screen/auth_screen.dart';
 import 'package:dope_chat/features/auth/screen/auth_user_info.dart';
 import 'package:dope_chat/features/chat/screen/chat_userScreen.dart';
+import 'package:dope_chat/features/chat/widgets/confirm_sent_file.dart';
 import 'package:dope_chat/features/search/screen/search_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -37,6 +40,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
           uid: uid,
         );
       });
+
+    case ConfirmSentFile.routeName:
+      final file = settings.arguments as File;
+      return MaterialPageRoute(
+          builder: (context) => ConfirmSentFile(file: file));
     default:
       return MaterialPageRoute(
           builder: (context) => const Scaffold(
