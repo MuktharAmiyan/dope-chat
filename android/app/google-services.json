@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "214017462531",
+    "project_id": "dopechat-am",
+    "storage_bucket": "dopechat-am.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214017462531:android:4894ecd1317f84f54dd936",
+        "android_client_info": {
+          "package_name": "com.example.dope_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214017462531-craq14krvmsb5791vqo35jko58bbj2d1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_FDECY_l1RKjU_gjNcIFiNPFvo93_7ts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214017462531-craq14krvmsb5791vqo35jko58bbj2d1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
