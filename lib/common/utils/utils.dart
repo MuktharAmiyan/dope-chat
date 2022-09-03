@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 Future<File?> pickImageFromGallery() async {
@@ -40,4 +40,12 @@ Future<File?> pickVideoFromCamera() async {
   }
 
   return video;
+}
+
+void showSnakBar(BuildContext context, String message) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(message),
+    ),
+  );
 }

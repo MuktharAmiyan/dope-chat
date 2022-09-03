@@ -1,36 +1,64 @@
-import 'package:dope_chat/common/widgets/custom_text_fields.dart';
+import 'dart:io';
+
+import 'package:dope_chat/common/const/const.dart';
+import 'package:dope_chat/common/utils/utils.dart';
+import 'package:dope_chat/features/auth/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AuthInfoScreen extends StatelessWidget {
-  static const routeName = '/auth-user-info';
-  AuthInfoScreen({
-    Key? key,
-  }) : super(key: key);
+import '../../../common/widgets/custom_text_fields.dart';
 
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController dobController = TextEditingController();
+class AuthUserInfoScreen extends ConsumerStatefulWidget {
+  static const String routeName = 'auth-user-info-screen';
+  const AuthUserInfoScreen({Key? key}) : super(key: key);
+
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      AuthUserInfoScreenState();
+}
+
+class AuthUserInfoScreenState extends ConsumerState<AuthUserInfoScreen> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController dobController = TextEditingController();
   DateTime? selectedDate;
+  File? profilePic;
 
-  void _datePicker(BuildContext context) async {
-    final date = await DatePicker.showDatePicker(
-      context,
-      maxTime: DateTime.now(),
-    );
+  @override
+  void dispose() {
+    super.dispose();
+    nameController.dispose();
+    dobController.dispose();
+  }
+
+  void datePicker(context) async {
+    final date = await DatePicker.showDatePicker(context);
     if (date != null) {
+      dobController.text = date.toString().substring(0, 10);
       selectedDate = date;
-      dobController.text = selectedDate.toString().substring(0, 10);
     } else {
       dobController.clear();
+      selectedDate = null;
     }
+  }
+
+  void logInToChatScreen(
+      BuildContext context, File? profilePic, DateTime? dob) {
+    if (nameController.text.trim().isNotEmpty && dob != null) {
+      ref.read(authControllerProvider).saveUserDataToFireBase(
+          context, nameController.text.trim(), dob.toString(), profilePic);
+    } else {
+      showSnakBar(context, "Enter all fields");
+    }
+  }
+
+  void pickImage() async {
+    profilePic = await pickImageFromGallery();
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -40,20 +68,20 @@ class AuthInfoScreen extends StatelessWidget {
           children: [
             Stack(
               children: [
-                CircleAvatar(
-                  backgroundColor: Colors.grey,
-                  radius: 60,
-                  child: Icon(
-                    Icons.person,
-                    size: size.width * .25,
-                    color: Colors.white,
-                  ),
-                ),
+                profilePic != null
+                    ? CircleAvatar(
+                        backgroundImage: FileImage(profilePic!),
+                        radius: 60,
+                      )
+                    : const CircleAvatar(
+                        backgroundImage: NetworkImage(defuiltProfilePic),
+                        radius: 60,
+                      ),
                 Positioned(
                   bottom: 0,
                   right: -10,
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: pickImage,
                     icon: const Icon(
                       Icons.add_a_photo,
                       color: Colors.blueGrey,
@@ -75,7 +103,7 @@ class AuthInfoScreen extends StatelessWidget {
               controller: dobController,
               readOnly: true,
               ontap: () {
-                _datePicker(context);
+                datePicker(context);
               },
             ),
           ],
@@ -86,7 +114,7 @@ class AuthInfoScreen extends StatelessWidget {
         child: FloatingActionButton(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-          onPressed: () {},
+          onPressed: () => logInToChatScreen(context, profilePic, selectedDate),
           backgroundColor: Colors.blueGrey,
           child: const Text(
             "Sign In",

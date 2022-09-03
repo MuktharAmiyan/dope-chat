@@ -1,7 +1,5 @@
 import 'package:dope_chat/common/widgets/custom_text_fields.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class UserEditScreen extends StatefulWidget {
@@ -70,7 +68,7 @@ class _UserEditScreenState extends State<UserEditScreen> {
                   right: -10,
                   child: IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.add_a_photo_outlined),
+                    icon: const Icon(Icons.add_a_photo_outlined),
                   ),
                 ),
               ],

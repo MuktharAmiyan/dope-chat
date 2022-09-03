@@ -1,15 +1,12 @@
 import 'package:dope_chat/common/widgets/user_tile.dart';
 import 'package:dope_chat/features/account/screen/account_screen.dart';
-import 'package:dope_chat/features/chat/screen/chat_userScreen.dart';
+import 'package:dope_chat/features/chat/screen/chat_userscreen.dart';
 import 'package:dope_chat/features/search/screen/search_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 import '../../../common/const/colors.dart';
 
 class ChatScreen extends StatelessWidget {
+  static const String routeName = 'chat-screen';
   const ChatScreen({Key? key}) : super(key: key);
 
   @override
@@ -31,7 +28,7 @@ class ChatScreen extends StatelessWidget {
             onTap: () {
               Navigator.pushNamed(context, AccountScreen.routeName);
             },
-            child: CircleAvatar(
+            child: const CircleAvatar(
               backgroundColor: Colors.green,
             ),
           ),

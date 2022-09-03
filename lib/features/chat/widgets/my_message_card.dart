@@ -1,17 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 import 'package:dope_chat/common/const/colors.dart';
 
 class MyMessageCard extends StatelessWidget {
-  String messgaeText;
-
-  String timeSent;
-
-  MyMessageCard({
+  final String messgaeText;
+  final String timeSent;
+  const MyMessageCard({
     Key? key,
     required this.messgaeText,
     required this.timeSent,
@@ -31,11 +25,11 @@ class MyMessageCard extends StatelessWidget {
           child: Stack(
             children: [
               Padding(
-                padding:
-                    EdgeInsets.only(top: 10, left: 10, right: 20, bottom: 22),
+                padding: const EdgeInsets.only(
+                    top: 10, left: 10, right: 20, bottom: 22),
                 child: Text(
                   messgaeText,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: whiteColor,
                     fontSize: 14,
                   ),

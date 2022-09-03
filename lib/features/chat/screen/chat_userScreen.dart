@@ -4,11 +4,9 @@ import 'package:dope_chat/features/chat/widgets/my_message_card.dart';
 import 'package:dope_chat/features/chat/widgets/receiver_message_card.dart';
 import 'package:dope_chat/info.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class ChatUserScreen extends StatelessWidget {
-  static const routeName = '/user-chat-screen';
+  static const String routeName = '/user-chat-screen';
   final String uid;
   const ChatUserScreen({Key? key, required this.uid}) : super(key: key);
 
@@ -26,15 +24,15 @@ class ChatUserScreen extends StatelessWidget {
             itemCount: (messages.length) + 1,
             itemBuilder: (context, index) {
               if (index < messages.length) {
-                final _message = messages[index];
-                return _message['isMe'] == true
+                final message = messages[index];
+                return message['isMe'] == true
                     ? MyMessageCard(
-                        messgaeText: _message['text'].toString(),
-                        timeSent: _message['time'].toString(),
+                        messgaeText: message['text'].toString(),
+                        timeSent: message['time'].toString(),
                       )
                     : ReceiverMessageCard(
-                        messgaeText: _message['text'].toString(),
-                        timeSent: _message['time'].toString(),
+                        messgaeText: message['text'].toString(),
+                        timeSent: message['time'].toString(),
                       );
               } else {
                 return const SizedBox(
@@ -43,7 +41,7 @@ class ChatUserScreen extends StatelessWidget {
               }
             },
           ),
-          Align(
+          const Align(
             alignment: Alignment.bottomCenter,
             child: BottomTextField(),
           ),

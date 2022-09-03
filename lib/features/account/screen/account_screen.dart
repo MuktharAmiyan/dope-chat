@@ -1,11 +1,7 @@
 import 'package:dope_chat/common/const/colors.dart';
 import 'package:dope_chat/common/widgets/custom_button.dart';
-import 'package:dope_chat/common/widgets/custom_text_fields.dart';
 import 'package:dope_chat/features/account/screen/user_edit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class AccountScreen extends StatelessWidget {
   static const routeName = '/account-screen';
@@ -28,7 +24,7 @@ class AccountScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       //backgroundImage: NetworkImage(''),
                       backgroundColor: Colors.red,
                       radius: 55,

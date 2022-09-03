@@ -2,8 +2,6 @@ import 'package:dope_chat/common/const/colors.dart';
 import 'package:dope_chat/common/widgets/user_tile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class SearchScreen extends StatelessWidget {
   static const routeName = '/search-screen';
@@ -22,7 +20,7 @@ class SearchScreen extends StatelessWidget {
         backgroundColor: transparentColor,
       ),
       body: ListView.separated(
-          itemBuilder: (context, index) => UserTile(
+          itemBuilder: (context, index) => const UserTile(
                 profileImage: "",
                 userName: "userName",
                 isSearchTitle: true,
