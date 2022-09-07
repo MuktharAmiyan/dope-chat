@@ -21,8 +21,11 @@ class AuthUserInfoScreen extends ConsumerStatefulWidget {
 class AuthUserInfoScreenState extends ConsumerState<AuthUserInfoScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController dobController = TextEditingController();
+  TextEditingController userNameController = TextEditingController();
   DateTime? selectedDate;
   File? profilePic;
+  bool isUniqueUserName = false;
+  String userName = '';
 
   @override
   void dispose() {
@@ -44,11 +47,16 @@ class AuthUserInfoScreenState extends ConsumerState<AuthUserInfoScreen> {
 
   void logInToChatScreen(
       BuildContext context, File? profilePic, DateTime? dob) {
-    if (nameController.text.trim().isNotEmpty && dob != null) {
-      ref.read(authControllerProvider).saveUserDataToFireBase(
-          context, nameController.text.trim(), dob.toString(), profilePic);
+    if (nameController.text.trim().isNotEmpty &&
+        dob != null &&
+        userName.isNotEmpty &&
+        isUniqueUserName) {
+      ref.read(authControllerProvider).saveUserDataToFireBase(context,
+          nameController.text.trim(), dob.toString(), userName, profilePic);
     } else {
-      showSnakBar(context, "Enter all fields");
+      !isUniqueUserName
+          ? showSnakBar(context, "Enter Unique userName")
+          : showSnakBar(context, "Enter all fields");
     }
   }
 
@@ -93,6 +101,23 @@ class AuthUserInfoScreenState extends ConsumerState<AuthUserInfoScreen> {
             ),
             const SizedBox(
               height: 20,
+            ),
+            CustomTextField(
+              hintText: 'Enter Username-',
+              controller: userNameController,
+              onChanged: (value) async {
+                userName = value.toLowerCase().trim();
+                if (value.isNotEmpty) {
+                  isUniqueUserName = await ref
+                      .read(authControllerProvider)
+                      .checkUsername(value.toLowerCase().trim());
+                  setState(() {});
+                }
+              },
+              sufficIcon: Icon(
+                Icons.done,
+                color: isUniqueUserName ? Colors.green : Colors.red,
+              ),
             ),
             CustomTextField(
               hintText: 'Enter Name',

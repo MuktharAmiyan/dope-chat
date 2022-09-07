@@ -5,13 +5,19 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final bool readOnly;
   final VoidCallback? ontap;
+  final Icon? sufficIcon;
+  final Color? suffixIconColor;
+  final Function(String)? onChanged;
 
   const CustomTextField(
       {Key? key,
       required this.hintText,
       required this.controller,
       this.readOnly = false,
-      this.ontap})
+      this.ontap,
+      this.onChanged,
+      this.suffixIconColor,
+      this.sufficIcon})
       : super(key: key);
 
   @override
@@ -26,8 +32,11 @@ class CustomTextField extends StatelessWidget {
           border: const OutlineInputBorder(),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          suffixIcon: sufficIcon,
+          suffixIconColor: suffixIconColor,
         ),
         onTap: ontap,
+        onChanged: onChanged,
       ),
     );
   }

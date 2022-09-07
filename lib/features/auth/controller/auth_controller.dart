@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:dope_chat/model/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,8 +26,12 @@ class AuthController {
     authRepository.signinWithPhoneNumber(context, phoneNumber);
   }
 
-  void verifyOTP(BuildContext context, String verificationID, String userOtp) {
-    authRepository.verifyOTP(context, verificationID, userOtp);
+  void verifyOTP(
+    BuildContext context,
+    String verificationID,
+    String userOtp,
+  ) {
+    authRepository.verifyOTP(context, verificationID, userOtp, ref);
   }
 
   Future<UserModel?> getCurrentUser() async {
@@ -40,8 +43,22 @@ class AuthController {
     BuildContext context,
     String name,
     String dob,
+    String userName,
     File? profilePic,
   ) {
-    authRepository.saveUserDataToFireBase(context, name, dob, profilePic, ref);
+    authRepository.saveUserDataToFireBase(
+        context, name, dob, userName, profilePic, ref);
+  }
+
+  Stream<UserModel> getUserDataWithUid(String uid) {
+    return authRepository.getUserDataWithUid(uid);
+  }
+
+  Future<bool> checkUsername(String userName) async {
+    return authRepository.checkUserName(userName);
+  }
+
+  Future<UserModel> getmyUserModel() {
+    return authRepository.getMyUserModel();
   }
 }

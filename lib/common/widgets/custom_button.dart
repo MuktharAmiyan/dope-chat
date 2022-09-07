@@ -2,10 +2,10 @@ import 'package:dope_chat/common/const/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final String text;
 
-  const CustomButton({Key? key, required this.onTap, required this.text})
+  const CustomButton({Key? key, this.onTap, required this.text})
       : super(key: key);
 
   @override
