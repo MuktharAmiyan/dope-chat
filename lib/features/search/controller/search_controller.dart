@@ -20,7 +20,23 @@ class SearchController {
     return searchRepository.searchUser(query, context);
   }
 
-  void requestFunction(String myUid, String userUid) {
-    searchRepository.addOrRemoveRequestlist(myUid, userUid);
+  void requestFunction(BuildContext context, String userUid) {
+    searchRepository.addOrRemoveRequestlist(context, userUid);
+  }
+
+  Stream<List<String>> getFriendListUids() {
+    return searchRepository.getFriendListUids();
+  }
+
+  Stream<List<String>> getRequestListUids() {
+    return searchRepository.getRequestListUids();
+  }
+
+  void acceptRequest(BuildContext context, String userUid) {
+    searchRepository.acceptRequest(context, userUid);
+  }
+
+  void rejectRequest(BuildContext context, String userUid) {
+    searchRepository.rejectRequest(context, userUid);
   }
 }

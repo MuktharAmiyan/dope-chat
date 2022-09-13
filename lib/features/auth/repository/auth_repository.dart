@@ -140,12 +140,4 @@ class AuthRepository {
       showSnakBar(context, e.toString());
     }
   }
-
-  Future<UserModel> getMyUserModel() async {
-    UserModel user;
-    var userCollection =
-        await firestore.collection('users').doc(auth.currentUser!.uid).get();
-    user = UserModel.fromMap(userCollection.data()!);
-    return user;
-  }
 }

@@ -7,11 +7,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class SearchUserTile extends ConsumerWidget {
   final UserModel user;
   final String myUid;
-  const SearchUserTile({Key? key, required this.user, required this.myUid})
-      : super(key: key);
+  final bool isSearch;
+  const SearchUserTile({
+    Key? key,
+    required this.user,
+    required this.myUid,
+    this.isSearch = true,
+  }) : super(key: key);
 
-  void requestFunction(WidgetRef ref) {
-    ref.read(searchControllerProvider).requestFunction(myUid, user.uid);
+  void requestFunction(WidgetRef ref, BuildContext context) {
+    ref.read(searchControllerProvider).requestFunction(context, user.uid);
   }
 
   @override
@@ -32,9 +37,10 @@ class SearchUserTile extends ConsumerWidget {
             )
           : user.reqfriends.contains(myUid)
               ? CustomButton(
-                  onTap: () => requestFunction(ref), text: 'Requested')
+                  onTap: () => requestFunction(ref, context), text: 'Requested')
               : CustomButton(
-                  onTap: () => requestFunction(ref), text: 'Add friend'),
+                  onTap: () => requestFunction(ref, context),
+                  text: 'Add friend'),
       onTap: user.friends.contains(myUid) ? null : null,
     );
   }

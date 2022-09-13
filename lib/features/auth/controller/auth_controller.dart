@@ -57,8 +57,4 @@ class AuthController {
   Future<bool> checkUsername(String userName) async {
     return authRepository.checkUserName(userName);
   }
-
-  Future<UserModel> getmyUserModel() {
-    return authRepository.getMyUserModel();
-  }
 }
